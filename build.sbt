@@ -14,5 +14,11 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "org.slf4j" % "slf4j-simple" % "1.6.4"
 
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1"
+
 publishTo := Some(Resolver.file("file",  new File( Path.userHome.absolutePath+"/dev/projects/my-maven-repo" )) )
+
+coverageMinimum := 80
+
+coverageFailOnMinimum := true
     

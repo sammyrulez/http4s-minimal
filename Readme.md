@@ -6,14 +6,13 @@ http4s uses Scala’s type system to increase self-documentation and compile-tim
 
 ##Features
 * Release
-
+* Controller testing
 
 
 
 ## Roadmap
 * JSON serialization / deserialization
 * jwt authentication
-* Controller testing
 * CI integration
 * Coverage
 * Monitoring

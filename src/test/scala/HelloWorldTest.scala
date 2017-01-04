@@ -1,0 +1,32 @@
+/**
+  * Created by sam on 04/01/17.
+  */
+
+import com.github.sammyrulez.http4s.HelloWorld
+import org.http4s._
+import org.http4s.dsl._
+
+import collection.mutable.Stack
+import org.scalatest._
+
+class HelloWorldTest extends FlatSpec with Matchers {
+
+  val service = HelloWorld.service
+
+  "A HelloWorld" should "say 'hello' to visitors" in {
+    val getRoot = Request(Method.GET, uri("/hello/sam"))
+    val task = service.run(getRoot)
+    val response = task.run
+    response.status.code should be (200)
+
+  }
+
+  it should "return 'not found' whithous someone to say hello" in {
+    val getRoot = Request(Method.GET, uri("/hello"))
+    val task = service.run(getRoot)
+    val response = task.run
+    response.status.code should be (404)
+  }
+}
+
+
