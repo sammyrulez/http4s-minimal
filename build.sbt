@@ -13,4 +13,6 @@ libraryDependencies ++= Seq(
 )
 
 libraryDependencies += "org.slf4j" % "slf4j-simple" % "1.6.4"
+
+publishTo := Some(Resolver.file("file",  new File( Path.userHome.absolutePath+"/dev/projects/my-maven-repo" )) )
     
