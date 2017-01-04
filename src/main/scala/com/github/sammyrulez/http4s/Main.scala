@@ -15,12 +15,15 @@ import org.http4s.server.blaze._
 
 object Main extends ServerApp {
 
-  val services = HelloWorld.service
+  val hello = HelloWorld.service
+
+  val servicies = UserService.service
 
   override def server(args: List[String]): Task[Server] = {
     BlazeBuilder
       .bindHttp(8080, "localhost")
-      .mountService(services, "/api")
+      .mountService(hello, "/common")
+      .mountService(servicies, "/api")
       .start
   }
 }
