@@ -1,6 +1,6 @@
 name := "http4s-minmal"
 
-version := "1.0"
+version <<= version in ThisBuild
 
 scalaVersion := "2.12.1"
 
