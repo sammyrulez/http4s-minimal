@@ -6,16 +6,17 @@
 
 
 ##Features
+
 * Release
 * Controller testing
 * CI integration
 * Coverage
-
+* JSON serialization / deserialization
 
 
 ## Roadmap
-* JSON serialization / deserialization
+
 * jwt authentication
+* Heroku deploy
 * swagger integration
 * Monitoring
-* Heroku deploy
