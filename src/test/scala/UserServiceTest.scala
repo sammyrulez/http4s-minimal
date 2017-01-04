@@ -4,7 +4,6 @@ import org.http4s._
 import org.http4s.dsl._
 import org.scalatest._
 import org.http4s.circe._
-import io.circe.syntax._
 import io.circe.generic.auto._
 
 /**
