@@ -12,17 +12,14 @@ import io.circe.syntax._
   */
 object UserService {
 
+  val service = HttpService {
+    case GET -> Root / "user" / name =>
+      Ok(User(name).asJson)
 
-  val jsonService = HttpService {
     case r @ POST -> Root / "user" =>
       r.as(jsonOf[User]).flatMap(user =>
         Ok(User.save(user).isSuccess.asJson)
       )
-  }
-
-  val service = HttpService {
-    case GET -> Root / "user" / name =>
-      Ok(User(name).asJson)
   }
 }
 
