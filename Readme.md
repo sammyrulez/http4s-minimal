@@ -12,11 +12,11 @@
 * CI integration
 * Coverage
 * JSON serialization / deserialization
+* jwt authentication
 
 
 ## Roadmap
 
-* jwt authentication
 * Heroku deploy
 * swagger integration
 * Monitoring
