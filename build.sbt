@@ -6,6 +6,8 @@ scalaVersion := "2.12.1"
 
 val http4sVersion = "0.15.2"
 
+enablePlugins(JavaAppPackaging)
+
 resolvers += "sammyrulez" at "https://raw.githubusercontent.com/sammyrulez/my-maven-repo/master/"
 
 libraryDependencies ++= Seq(
