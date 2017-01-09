@@ -5,6 +5,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/sammyrulez/http4s-minimal/badge.svg?branch=master)](https://coveralls.io/github/sammyrulez/http4s-minimal)
 
 
+http://localhost:9000/common/hello/visitor
+
 ##Features
 
 * Release
@@ -13,10 +15,11 @@
 * Coverage
 * JSON serialization / deserialization
 * jwt authentication
+* [Heroku](https://http4s-minimal.herokuapp.com/common/hello/sam) deploy
+
 
 
 ## Roadmap
 
-* Heroku deploy
 * swagger integration
 * Monitoring
