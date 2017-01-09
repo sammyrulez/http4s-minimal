@@ -15,15 +15,17 @@ class UserServiceTest extends FlatSpec with Matchers {
 
   val service = UserService.service
 
+  val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
+
   "A User repository " should " return user data" in {
-    val getRoot = Request(Method.GET, uri("/user/sam")).putHeaders(Header(Authorization.name.value,"YES"))
+    val getRoot = Request(Method.GET, uri("/user/sam")).putHeaders(Header(Authorization.name.value,token))
     val task = service.run(getRoot)
     val response = task.run
     response.status.code should be (200)
 
   }
   it should " save user data" in {
-    val req = Request(Method.POST, uri("/user")).putHeaders(Header(Authorization.name.value,"YES")).withBody(User("Sam"))(jsonEncoderOf)
+    val req = Request(Method.POST, uri("/user")).putHeaders(Header(Authorization.name.value,token)).withBody(User("Sam"))(jsonEncoderOf)
     val task = service.run(req.run)
     val response = task.run
     response.status.code should be (200)

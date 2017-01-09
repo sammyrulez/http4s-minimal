@@ -6,15 +6,26 @@ import org.http4s._
 import org.http4s.dsl._
 import org.http4s.server._
 import org.http4s.util.string._
-import scalaz._, Scalaz._, scalaz.concurrent.Task
+import pdi.jwt.{JwtCirce, JwtAlgorithm, JwtClaim}
+
+import scalaz._
+import Scalaz._
+import scalaz.concurrent.Task
 
 object AuthUser {
 
+  val key = "secret"
 
   val authUserKleisli: Kleisli[Task, Request, String \/ User] = Kleisli( request => Task.delay(
      request.headers.get(Authorization) match {
        case None => "NO AUTH".left
-       case Some(token) => User(token.toString()).right
+       case Some(token) =>
+         JwtCirce.decode(token.toRaw.value, key, Seq(JwtAlgorithm.HS256)) match  {
+           case scala.util.Success(claim) => User(claim.subject.getOrElse("anaon")).right
+           case scala.util.Failure(x) => x.getMessage.left
+         }
+
+
      }
 
   ))
