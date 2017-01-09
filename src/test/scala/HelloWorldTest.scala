@@ -20,7 +20,7 @@ class HelloWorldTest extends FlatSpec with Matchers {
 
   }
 
-  it should "return 'not found' whithous someone to say hello" in {
+  it should "return 'not found' without someone to say hello" in {
     val getRoot = Request(Method.GET, uri("/hello"))
     val task = service.run(getRoot)
     val response = task.run
