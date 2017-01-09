@@ -17,16 +17,12 @@ object AuthUser {
   val key = "secret"
 
   val authUserKleisli: Kleisli[Task, Request, String \/ User] = Kleisli( request => Task.delay(
-     request.headers.get(Authorization) match {
-       case None => "NO AUTH".left
-       case Some(token) =>
-         JwtCirce.decode(token.toRaw.value, key, Seq(JwtAlgorithm.HS256)) match  {
-           case scala.util.Success(claim) => User(claim.subject.getOrElse("anaon")).right
-           case scala.util.Failure(x) => x.getMessage.left
-         }
 
-
-     }
+    for { token <- request.headers.get(Authorization) \/> "NO AUTH"
+          claim <- JwtCirce.decode(token.toRaw.value, key, Seq(JwtAlgorithm.HS256)).toOption \/> "INVALID TOKEN"
+          subject <- claim.subject  \/>  "NO SUBJ"
+          user <- User(subject).right
+    } yield user
 
   ))
 

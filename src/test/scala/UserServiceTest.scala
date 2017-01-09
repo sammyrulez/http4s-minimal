@@ -1,5 +1,8 @@
+import java.time.Instant
+
 import com.github.sammyrulez.http4s.UserService
 import com.github.sammyrulez.http4s.entities.User
+import com.github.sammyrulez.http4s.jwt.AuthUser
 import org.http4s._
 import org.http4s.dsl._
 import org.scalatest._
@@ -7,6 +10,7 @@ import org.http4s.circe._
 import io.circe.generic.auto._
 import org.http4s.headers.Authorization
 import org.http4s.server.middleware.authentication.Authentication
+import pdi.jwt.{JwtAlgorithm, JwtCirce, JwtClaim}
 
 /**
   * Created by sam on 04/01/17.
@@ -15,7 +19,13 @@ class UserServiceTest extends FlatSpec with Matchers {
 
   val service = UserService.service
 
-  val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
+  val claim = JwtClaim(
+        expiration = Some(Instant.now.plusSeconds(157784760).getEpochSecond),
+        issuedAt = Some(Instant.now.getEpochSecond),
+        subject = Some("Sam")
+       )
+  val token = JwtCirce.encode(claim, AuthUser.key, JwtAlgorithm.HS256)
+
 
   "A User repository " should " return user data" in {
     val getRoot = Request(Method.GET, uri("/user/sam")).putHeaders(Header(Authorization.name.value,token))
