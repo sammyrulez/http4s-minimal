@@ -1,4 +1,4 @@
-name := "http4s-minmal"
+name := "http4s-minimal"
 
 version <<= version in ThisBuild
 
