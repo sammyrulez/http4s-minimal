@@ -1,12 +1,15 @@
-name := "http4s-minimal"
 
-version <<= version in ThisBuild
 
-scalaVersion := "2.12.1"
+lazy val http4sMinimal = (project in file(".")).
+  enablePlugins(JavaAppPackaging).
+  settings(
+    name := "http4s-minimal",
+    scalaVersion := "2.12.1",
+    version <<= version in ThisBuild
+  )
+
 
 val http4sVersion = "0.15.2"
-
-enablePlugins(JavaAppPackaging)
 
 resolvers += "sammyrulez" at "https://raw.githubusercontent.com/sammyrulez/my-maven-repo/master/"
 
