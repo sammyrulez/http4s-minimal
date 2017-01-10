@@ -16,7 +16,7 @@ http://localhost:9000/common/hello/visitor
 * JSON serialization / deserialization
 * jwt authentication
 * [Heroku](https://http4s-minimal.herokuapp.com/common/hello/sam) deploy
-* Monitoring : [Prometeus](https://prometeus.io) support. Tested  locally
+* Monitoring : [Prometheus](https://prometheus.io) support. Tested  locally
 
 
 
