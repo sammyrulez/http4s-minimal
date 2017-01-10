@@ -13,11 +13,15 @@ val http4sVersion = "0.15.2"
 
 resolvers += "sammyrulez" at "https://raw.githubusercontent.com/sammyrulez/my-maven-repo/master/"
 
+resolvers += Resolver.sonatypeRepo("snapshots")
+
 libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-dsl" % http4sVersion,
   "org.http4s" %% "http4s-blaze-server" % http4sVersion,
   "org.http4s" %% "http4s-blaze-client" % http4sVersion,
-  "org.http4s" %% "http4s-circe" % http4sVersion
+  "org.http4s" %% "http4s-circe" % http4sVersion,
+  "org.http4s" %% "rho-swagger" % "0.16.0-SNAPSHOT"
+
 )
 
 libraryDependencies +="io.circe" %% "circe-generic" % "0.6.1"

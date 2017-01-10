@@ -13,7 +13,7 @@ class MonitorTest extends FlatSpec with Matchers {
 
   "A Monitor" should " display metrics for 'HelloWorld' service" in {
 
-    val helloService = HelloWorld.service
+    val helloService = HelloWorld.service.toService()
 
     val serviceRequest = Request(Method.GET, uri("/hello/sam"))
     val serviceTask = helloService.run(serviceRequest)

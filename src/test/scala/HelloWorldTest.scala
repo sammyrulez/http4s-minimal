@@ -10,7 +10,7 @@ import org.scalatest._
 
 class HelloWorldTest extends FlatSpec with Matchers {
 
-  val service = HelloWorld.service
+  val service = HelloWorld.service.toService()
 
   "A HelloWorld" should "say 'hello' to visitors" in {
     val getRoot = Request(Method.GET, uri("/hello/sam"))
