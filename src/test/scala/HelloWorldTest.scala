@@ -3,9 +3,9 @@
   */
 
 import com.github.sammyrulez.http4s.HelloWorld
+import com.github.sammyrulez.http4s.monitor.Metrics
 import org.http4s._
 import org.http4s.dsl._
-
 import org.scalatest._
 
 class HelloWorldTest extends FlatSpec with Matchers {
@@ -20,12 +20,15 @@ class HelloWorldTest extends FlatSpec with Matchers {
 
   }
 
-  it should "return 'not found' whithous someone to say hello" in {
+  it should "return 'not found' without someone to say hello" in {
     val getRoot = Request(Method.GET, uri("/hello"))
     val task = service.run(getRoot)
     val response = task.run
     response.status.code should be (404)
   }
+
+
+
 }
 
 

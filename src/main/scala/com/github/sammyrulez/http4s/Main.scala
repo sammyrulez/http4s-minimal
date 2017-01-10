@@ -19,12 +19,15 @@ object Main extends ServerApp {
 
   val servicies = UserService.service
 
+  val monitor = MonitorService.service
+
   override def server(args: List[String]): Task[Server] = {
     val port = sys.env.getOrElse("PORT", "9000").toInt
 
     BlazeBuilder.bindHttp(port, "0.0.0.0")
       .mountService(hello, "/common")
       .mountService(servicies, "/api")
+      .mountService(monitor, "/monitor")
       .start
   }
 }
