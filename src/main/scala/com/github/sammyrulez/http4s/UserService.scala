@@ -21,7 +21,6 @@ object UserService {
 
   val authedService: AuthedService[User] =
     AuthedService {
-     case GET -> Root / "welcome" as loggedInUser => Ok(s"Welcome, ${loggedInUser.username}")
      case GET -> Root / "user" / name  as loggedInUser => Ok(User(name).asJson)
      case r @ POST -> Root / "user"  as loggedInUser  =>
         //r.as(jsonOf[User]).flatMap(user =>

@@ -34,7 +34,16 @@ class UserServiceTest extends FlatSpec with Matchers {
     response.status.code should be (200)
 
   }
-  it should " save user data" in {
+
+  "A User repository " should " denay access to unauthenticated users" in {
+    val getRoot = Request(Method.GET, uri("/user/sam"))
+    val task = service.run(getRoot)
+    val response = task.run
+    response.status.code should be(403)
+  }
+
+
+    it should " save user data" in {
     val req = Request(Method.POST, uri("/user")).putHeaders(Header(Authorization.name.value,token)).withBody(User("Sam"))(jsonEncoderOf)
     val task = service.run(req.run)
     val response = task.run
