@@ -3,9 +3,9 @@
   */
 
 import com.github.sammyrulez.http4s.HelloWorld
+import com.github.sammyrulez.http4s.monitor.Metrics
 import org.http4s._
 import org.http4s.dsl._
-
 import org.scalatest._
 
 class HelloWorldTest extends FlatSpec with Matchers {
@@ -26,6 +26,9 @@ class HelloWorldTest extends FlatSpec with Matchers {
     val response = task.run
     response.status.code should be (404)
   }
+
+
+
 }
 
 

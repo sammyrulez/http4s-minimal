@@ -25,6 +25,8 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 
 libraryDependencies += "com.pauldijou" %% "jwt-circe" % "0.10.0"
 
+libraryDependencies += "org.lyranthe.prometheus" %% "client" % "0.8.4"
+
 publishTo := Some(Resolver.file("file",  new File( Path.userHome.absolutePath+"/dev/projects/my-maven-repo" )) )
 
 coverageMinimum := 80
